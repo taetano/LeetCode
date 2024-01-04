@@ -6,12 +6,9 @@ class Solution(object):
             if char.isalnum():
                 candi.append(char.lower())
         
-        i, j = 0, len(candi) - 1
-        while (i < j):
-            if candi[i] != candi[j]:
+        while len(candi) > 1:
+            if candi.pop(0) != candi.pop():
                 return False
-            i += 1
-            j -= 1
             
         return True
         
