@@ -27,6 +27,6 @@ class Solution {
             } else candi.add(str);
         }
         
-        return new ArrayList(set);
+        return List.copyOf(set);
     }
 }
