@@ -39,15 +39,12 @@ class Solution {
         if (s.length() < 2) return s.length();
         HashMap<Character, Integer> map = new HashMap<>();
         int max = 0;
-        int begin = 0;
-        int end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (map.containsKey(s.charAt(i))) {
-                begin = Math.max(begin, map.get(s.charAt(i)) + 1);
+        for (int begin = 0, end = 0;  end < s.length(); end++) {
+            if (map.containsKey(s.charAt(end))) {
+                begin = Math.max(begin, map.get(s.charAt(end)) + 1);
             }
             
-            map.put(s.charAt(i), i);
-            end = i;
+            map.put(s.charAt(end), end);
             max = Math.max(max, end - begin + 1);
         }
         
