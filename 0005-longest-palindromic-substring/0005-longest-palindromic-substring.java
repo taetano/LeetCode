@@ -1,5 +1,5 @@
 class Solution {
-    int lo, maxLen;
+    int begin, lenCnt;
     
     public String longestPalindrome(String s) {
         for (int i = 0; i < s.length(); i++) {
@@ -7,7 +7,7 @@ class Solution {
             extendSubstring(s, i, i + 1);
         }
         
-        return s.substring(lo, lo + maxLen);
+        return s.substring(begin, begin + lenCnt);
     }
     
     void extendSubstring(String s, int j, int k) {
@@ -16,9 +16,9 @@ class Solution {
             k++;
         }
         
-        if (maxLen < k - j - 1) {
-            lo = j + 1;
-            maxLen = k - j - 1;
+        if (lenCnt < k - j - 1) {
+            begin = j + 1;
+            lenCnt = k - j - 1;
         }
     }
 }
