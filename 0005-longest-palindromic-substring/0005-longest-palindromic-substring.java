@@ -1,24 +1,23 @@
 class Solution {
-    int begin, lenCnt;
-    
+    int palindromStartAt = 0, maxLen = 0;
     public String longestPalindrome(String s) {
         for (int i = 0; i < s.length(); i++) {
-            extendSubstring(s, i, i);
-            extendSubstring(s, i, i + 1);
+            extendAroundCenter(s, i, i); // odd
+            extendAroundCenter(s, i, i + 1); // even
         }
         
-        return s.substring(begin, begin + lenCnt);
+        return s.substring(palindromStartAt, palindromStartAt + maxLen);
     }
     
-    void extendSubstring(String s, int j, int k) {
-        while (j >= 0 && k < s.length() && s.charAt(j) == s.charAt(k)) {
-            j--;
-            k++;
+    void extendAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            left--;
+            right++;
         }
         
-        if (lenCnt < k - j - 1) {
-            begin = j + 1;
-            lenCnt = k - j - 1;
+        if (maxLen < right - left - 1) {
+            palindromStartAt = left + 1;
+            maxLen = right - left - 1;
         }
     }
 }
