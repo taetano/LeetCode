@@ -10,7 +10,10 @@ class Solution {
                 idx++;
                 end = idx;
             }
-            sb.append(new StringBuilder(s.substring(start, end)).reverse().toString());
+            
+            for (int i = end - 1; i >= start; i--) {
+                sb.append(s.charAt(i));
+            }
             
             if (idx < s.length()) {
                 sb.append(' ');
