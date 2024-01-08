@@ -1,25 +1,21 @@
 class Solution {
     public String reverseWords(String s) {
-        s = new StringBuilder(s.trim()).reverse().toString();
+        s = s.trim();
         StringBuilder sb = new StringBuilder();
         
         int idx = 0;
-        while (idx < s.length()) {
-            int start = idx, end = 0;
-            while (idx < s.length() && !Character.isSpace(s.charAt(idx))) {
-                idx++;
-                end = idx;
+        while (idx < s.trim().length()) {
+            StringBuilder tmp = new StringBuilder();
+            while (idx < s.length() && Character.isLetterOrDigit(s.charAt(idx))) {
+                tmp.append(s.charAt(idx++));
             }
-            
-            for (int i = end - 1; i >= start; i--) {
-                sb.append(s.charAt(i));
-            }
+            sb.insert(0, tmp);
             
             if (idx < s.length()) {
-                sb.append(' ');
                 while (idx < s.length() && Character.isSpace(s.charAt(idx))) {
-                    idx++;       
+                    idx++;
                 }
+                sb.insert(0, ' ');
             }
         }
         
